@@ -24,7 +24,7 @@ namespace JCTools.Shortener
         internal static Options Options;
         public static IServiceCollection AddLinksShortener<TDatabaseContext>(
             this IServiceCollection services,
-            Action<Options> optionsActions
+            Action<Options> optionsActions = null
         )
             where TDatabaseContext : DbContext, IDatabaseContext
         {
@@ -33,6 +33,7 @@ namespace JCTools.Shortener
 
             services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddTransient<ILinkGenerator, LinkGenerator<TDatabaseContext>>();
+            services.AddTransient<IDatabaseContext, TDatabaseContext>();
 
             services.AddAuthorization(o =>
             {

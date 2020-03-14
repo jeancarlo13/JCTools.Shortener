@@ -5,7 +5,7 @@
     <OutputType>Library</OutputType>
     <IsPackable>true</IsPackable>
     <PackageId>JCTools.Shortener</PackageId>
-    <Version>1.0.4</Version>
+    <Version>1.0.6</Version>
     <Authors>JeanCarlo13</Authors>
     <Company>JCTools</Company>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>

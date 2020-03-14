@@ -13,25 +13,26 @@ using Microsoft.AspNetCore.Authorization;
 namespace JCTools.Shortener.Controllers
 {
     [Authorize(Settings.Options.PolicyName)]
-    public class ShortenerController<TDatabaseContext> : Controller
-        where TDatabaseContext : DbContext, IDatabaseContext
+    public class ShortenerController : Controller
     {
         /// <summary>
         /// The logger instance to be use for log the application messages
         /// </summary>
-        private readonly ILogger<ShortenerController<TDatabaseContext>> _logger;
+        private readonly ILogger<ShortenerController> _logger;
         /// <summary>
         /// the database context instance to be use
         /// </summary>
-        private readonly TDatabaseContext _context;
+        private readonly IDatabaseContext _context;
 
         public ShortenerController(
-            ILogger<ShortenerController<TDatabaseContext>> logger,
-            TDatabaseContext context
+            ILogger<ShortenerController> logger,
+            IDatabaseContext context
         )
         {
             _logger = logger;
             this._context = context;
+            if (context.GetType().IsAssignableFrom(typeof(DbContext)))
+                throw new ArgumentException($"The argument {nameof(context)} not implement {typeof(DbContext).FullName}.", nameof(context));
         }
 
         /// <summary>
@@ -45,8 +46,10 @@ namespace JCTools.Shortener.Controllers
         {
             var link = await _context.ShortLinks.FirstOrDefaultAsync(sl => sl.Token == token);
             if (link == null)
+            {
+                _logger.LogWarning($"Attemp of access with an invalid token: {token}");
                 return NotFound();
-
+            }
             return Redirect(link.RelatedUrl);
         }
     }
