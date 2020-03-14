@@ -16,7 +16,7 @@ The longitude and the characters can was changed in the service initialization i
 1. Add the package **JCTools.Shortener** to your project.
 
 ``` bash
-    dotnet add package JCTools.Shortener -v 1.0.5
+    dotnet add package JCTools.Shortener -v 1.0.6
 ```
 
 2. Implement the interface IDatabaseContext in your database contest
