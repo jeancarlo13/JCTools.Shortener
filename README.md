@@ -50,14 +50,11 @@ The longitude and the characters can was changed in the service initialization i
 5. Inject the *JCTools.Shortener.Services.ILinkGenerator* service
 
 ``` csharp
-    public class GanttController : Controller
+    public class OtherController : Controller
     {
-        /// <summary>
-        /// the shortener service to be used for share the gantt charts
-        /// </summary>
         private readonly ILinkGenerator _shortenerService;
 
-        public GanttController(ILinkGenerator shortenerService)
+        public OtherController(ILinkGenerator shortenerService)
         {
             ...
     
@@ -99,7 +96,6 @@ In the configuration of the Shortener services into the ConfigureServices method
 
 ``` csharp
 
-...
     ...
 
     services.AddLinksShortener<DbContext>(o => {
@@ -107,9 +103,9 @@ In the configuration of the Shortener services into the ConfigureServices method
         o.ValidCharacters = "1234567890-_qwerty";
         // 2. The min longitude (default 2) of the short links
         o.MinLength = 3; 
-        // 2. The max longitude (default 6) of the short links
+        // 3. The max longitude (default 6) of the short links
         o.MaxLength = 10;
-        // 3. By default, the access to the redirection action is anonymous
+        // 4. By default, the access to the redirection action is anonymous
         // It's possible change using a authorization policy  
         o.ConfigurePolicy = p => {
             p.RequireAuthenticatedUser();
