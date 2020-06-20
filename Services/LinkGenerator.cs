@@ -101,9 +101,8 @@ namespace JCTools.Shortener.Services
         /// <returns>The generated absolute url</returns>
         public string GetAbsoluteUrl(string token)
         {
-            return this._urlHelper.Action(
-                nameof(Controllers.ShortenerController.RedirectTo),
-                nameof(Controllers.ShortenerController).Replace("Controller", ""),
+            return _urlHelper.RouteUrl(
+                Controllers.ShortenerController.redirectToRouteName,
                 new { token = token },
                 this._urlHelper.ActionContext.HttpContext.Request.Scheme
             );

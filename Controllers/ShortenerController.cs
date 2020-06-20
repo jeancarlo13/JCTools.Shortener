@@ -16,6 +16,11 @@ namespace JCTools.Shortener.Controllers
     public class ShortenerController : Controller
     {
         /// <summary>
+        /// The name of the route template to be use by the <see cref="RedirectTo"> action
+        /// </summary>
+        internal const string redirectToRouteName = "ShortenerController_RedirectTo";
+
+        /// <summary>
         /// The logger instance to be use for log the application messages
         /// </summary>
         private readonly ILogger<ShortenerController> _logger;
@@ -41,7 +46,7 @@ namespace JCTools.Shortener.Controllers
         /// <param name="token">The token to be use for the redirection</param>
         /// <returns>The task to be execute</returns>
         [HttpGet]
-        [Route("/{token}")]
+        [Route("/{token}", Order = int.MaxValue, Name= redirectToRouteName)]
         public async Task<IActionResult> RedirectTo(string token)
         {
             var link = await _context.ShortLinks.FirstOrDefaultAsync(sl => sl.Token == token);
