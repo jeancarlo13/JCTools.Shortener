@@ -1,22 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using JCTools.Shortener.Models;
 using JCTools.Shortener.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 
 namespace JCTools.Shortener.Controllers
 {
+    /// <summary>
+    /// The controller to be used to require the redirection to the real url 
+    /// from the generate shortened urls
+    /// </summary>
     [Authorize(Settings.Options.PolicyName)]
     public class ShortenerController : Controller
     {
         /// <summary>
-        /// The name of the route template to be use by the <see cref="RedirectTo"> action
+        /// The name of the route template to be use by the <see cref="RedirectTo" /> action
         /// </summary>
         internal const string redirectToRouteName = "ShortenerController_RedirectTo";
 
@@ -25,17 +25,21 @@ namespace JCTools.Shortener.Controllers
         /// </summary>
         private readonly ILogger<ShortenerController> _logger;
         /// <summary>
-        /// the database context instance to be use
+        /// The database context instance to be used to review the url relationships
         /// </summary>
         private readonly IDatabaseContext _context;
-
+        /// <summary>
+        /// Initialize the controller instances
+        /// </summary>
+        /// <param name="loggerFactory">The logger factory instance to be used for log creation</param>
+        /// <param name="context">The database context instance to be used to review the url relationships</param>
         public ShortenerController(
-            ILogger<ShortenerController> logger,
+            ILoggerFactory loggerFactory,
             IDatabaseContext context
         )
         {
-            _logger = logger;
-            this._context = context;
+            _logger = loggerFactory.CreateLogger<ShortenerController>();
+            _context = context;
             if (context.GetType().IsAssignableFrom(typeof(DbContext)))
                 throw new ArgumentException($"The argument {nameof(context)} not implement {typeof(DbContext).FullName}.", nameof(context));
         }
@@ -46,7 +50,7 @@ namespace JCTools.Shortener.Controllers
         /// <param name="token">The token to be use for the redirection</param>
         /// <returns>The task to be execute</returns>
         [HttpGet]
-        [Route("/{token}", Order = int.MaxValue, Name= redirectToRouteName)]
+        [Route("/{token}", Order = int.MaxValue, Name = redirectToRouteName)]
         public async Task<IActionResult> RedirectTo(string token)
         {
             var link = await _context.ShortLinks.FirstOrDefaultAsync(sl => sl.Token == token);

@@ -3,9 +3,12 @@ using JCTools.Shortener.Models;
 
 namespace JCTools.Shortener.Services
 {
+    /// <summary>
+    /// Defines the available methods for the generation of shortened tokens 
+    /// and their relations with the real URLS
+    /// </summary>
     public interface ILinkGenerator
     {
-
         /// <summary>
         /// Generate and save a short link with a random token
         /// </summary>

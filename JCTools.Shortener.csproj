@@ -11,12 +11,11 @@
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <Description>A simple links shortener for include in .net core projects</Description>
     <Copyright></Copyright>
-
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-
     <PackageProjectUrl>https://github.com/jeancarlo13/JCTools.Shortener</PackageProjectUrl>
     <RepositoryUrl>https://github.com/jeancarlo13/JCTools.Shortener</RepositoryUrl>
     <PackageTags>.Net Core, Asp.Net Core, MVC, link, links, shortener, links shortener</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

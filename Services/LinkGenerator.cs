@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using JCTools.Shortener.Models;
 using JCTools.Shortener.Settings;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -12,14 +11,28 @@ using Microsoft.EntityFrameworkCore;
 
 namespace JCTools.Shortener.Services
 {
+    /// <summary>
+    /// Implements the available methods for the generation of shortened tokens 
+    /// and their relations with the real URLS
+    /// </summary>
+    /// <typeparam name="TDatabaseContext">The database context type to be used to store the relationships between the real urls and the shortened tokens </typeparam>
     internal class LinkGenerator<TDatabaseContext> : ILinkGenerator
         where TDatabaseContext : DbContext, IDatabaseContext
     {
         /// <summary>
-        /// the database context to be use
+        /// The database context to be used to store the relationships between the real urls and the shortened tokens 
         /// </summary>
         private readonly TDatabaseContext _context;
+        /// <summary>
+        /// The <see cref="IUrlHelper" /> instance to be used to build URLs within an application.
+        /// </summary>
         private readonly IUrlHelper _urlHelper;
+        /// <summary>
+        /// Initializes an instance
+        /// </summary>
+        /// <param name="context">The database context to be used to store the relationships between the real urls and the shortened tokens </param>
+        /// <param name="urlHelperFactory">The <see cref="IUrlHelperFactory" /> instance to be used to build the required <see cref="IUrlHelper" /> instance</param>
+        /// <param name="actionContextAccessor">The instance of the action context accessor required for the generation of the required <see cref="IUrlHelper" /> instance</param>
         public LinkGenerator(
             TDatabaseContext context,
             IUrlHelperFactory urlHelperFactory,

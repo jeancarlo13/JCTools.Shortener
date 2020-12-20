@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace JCTools.Shortener.Settings
 {
+    /// <summary>
+    /// Defines all the package settings that are used to suit the application where it will be used
+    /// </summary>
     public class Options
     {
         /// <summary>
