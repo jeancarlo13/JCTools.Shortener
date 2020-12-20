@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using JCTools.Shortener.Models;
 using JCTools.Shortener.Settings;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
