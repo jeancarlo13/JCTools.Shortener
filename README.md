@@ -1,5 +1,5 @@
 # JCTools.Shortener
-![v1.1.0](https://img.shields.io/badge/nuget-v1.1.0-blue)
+![v1.1.2](https://img.shields.io/badge/nuget-v1.1.2-blue)
 ![.net core 3.1](https://img.shields.io/badge/.net%20core-v3.1-green)
 ![.net 5.0](https://img.shields.io/badge/.net%20-v5.0-green)
 
@@ -20,7 +20,7 @@ The longitude and the characters can was changed in the service initialization i
 1. Add the package **JCTools.Shortener** to your project.
 
 ``` bash
-    dotnet add package JCTools.Shortener -v 1.1.0
+    dotnet add package JCTools.Shortener -v 1.1.1
 ```
 
 2. Implement the interface IDatabaseContext in your database contest
