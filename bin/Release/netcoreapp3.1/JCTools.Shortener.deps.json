@@ -10,19 +10,19 @@
       "NETCOREAPP",
       "NETCOREAPP3_1"
     ],
-    "languageVersion": "",
+    "languageVersion": "8.0",
     "platform": "",
     "allowUnsafe": false,
     "warningsAsErrors": false,
     "optimize": true,
     "keyFile": "",
     "emitEntryPoint": false,
-    "xmlDoc": false,
+    "xmlDoc": true,
     "debugType": "portable"
   },
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "JCTools.Shortener/1.0.8": {
+      "JCTools.Shortener/1.1.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "3.1.1",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
@@ -2154,7 +2154,7 @@
     }
   },
   "libraries": {
-    "JCTools.Shortener/1.0.8": {
+    "JCTools.Shortener/1.1.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
