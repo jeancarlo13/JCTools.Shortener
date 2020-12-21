@@ -1,4 +1,8 @@
-# JCTools. Shortener
+# JCTools.Shortener
+![v1.1.0](https://img.shields.io/badge/nuget-v1.1.0-blue)
+![.net core 3.1](https://img.shields.io/badge/.net%20core-v3.1-green)
+![.net 5.0](https://img.shields.io/badge/.net%20-v5.0-green)
+
 A simple **links shortener** for include in .net core projects.
 
 Allows add support for create and manage **random** and **unique** short links. Its short links are ready for share link to the features or pages of your site.
@@ -16,7 +20,7 @@ The longitude and the characters can was changed in the service initialization i
 1. Add the package **JCTools.Shortener** to your project.
 
 ``` bash
-    dotnet add package JCTools.Shortener -v 1.0.8
+    dotnet add package JCTools.Shortener -v 1.1.0
 ```
 
 2. Implement the interface IDatabaseContext in your database contest
